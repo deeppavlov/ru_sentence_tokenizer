@@ -106,7 +106,8 @@ def ru_sent_tokenize(text: str,
 
         si += 1
 
-        send = _is_sentence_end(text[sent_start: span_end], text[span_end:], shortenings, joining_shortenings, paired_shortenings)
+        send = _is_sentence_end(text[sent_start: span_end], text[span_end:],
+                                shortenings, joining_shortenings, paired_shortenings)
         if send == _JOIN:
             continue
 
