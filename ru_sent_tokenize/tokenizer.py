@@ -1,5 +1,6 @@
 import re
 import logging
+from typing import Set, Tuple, List
 
 SENT_RE = re.compile(r'[^\.?!…]+[\.?!…]*["»“ ]*')
 
@@ -21,8 +22,7 @@ _MAYBE = 1
 _SPLIT = 2
 
 JOINING_SHORTENINGS = {'mr', 'mrs', 'ms', 'dr', 'vs', 'англ', 'итал', 'греч', 'евр', 'араб', 'яп', 'слав', 'кит',
-                        'тел', 'св', 'ул', 'устар', 'им', 'г',
-                        'см', 'д', 'стр', 'корп', 'пл', 'пер', 'сокр', 'рис'}
+                       'тел', 'св', 'ул', 'устар', 'им', 'г', 'см', 'д', 'стр', 'корп', 'пл', 'пер', 'сокр', 'рис'}
 SHORTENINGS = {'co', 'corp', 'inc', 'авт', 'адм', 'барр', 'внутр', 'га', 'дифф', 'дол', 'долл', 'зав', 'зам', 'искл',
                'коп', 'корп', 'куб', 'лат', 'мин', 'о', 'обл', 'обр', 'прим', 'проц', 'р', 'ред', 'руб', 'рус', 'русск',
                'сан', 'сек', 'тыс', 'эт', 'яз', 'гос', 'мн', 'жен', 'муж', 'накл', 'повел', 'букв', 'шутл', 'ед'}
@@ -34,7 +34,10 @@ def _regex_split_separators(text: str) -> [str]:
     return [x.strip() for x in SENT_RE.findall(text)]
 
 
-def _is_sentence_end(left: str, right: str) -> int:
+def _is_sentence_end(left: str, right: str,
+                     shortenings: Set[str],
+                     joining_shortenings: Set[str],
+                     paired_shortenings: Set[Tuple[str, str]]) -> int:
     if not _STARTS_WITH_EMPTYNESS.match(right):
         return _JOIN
 
@@ -46,7 +49,7 @@ def _is_sentence_end(left: str, right: str) -> int:
     if left_last_word:
         lw = left_last_word.group(1)
 
-        if lw.lower() in JOINING_SHORTENINGS:
+        if lw.lower() in joining_shortenings:
             return _JOIN
 
         if _ONLY_RUS_CONSONANTS.search(lw) and lw[-1].islower():
@@ -55,13 +58,13 @@ def _is_sentence_end(left: str, right: str) -> int:
     pse = _PAIRED_SHORTENING_IN_THE_END.search(left)
     if pse:
         s1, s2 = pse.groups()
-        if (s1, s2) in PAIRED_SHORTENINGS:
+        if (s1, s2) in paired_shortenings:
             return _MAYBE
 
     right_first_word = _FIRST_WORD.match(right)
     if right_first_word:
         rw = right_first_word.group(1)
-        if (lw, rw) in PAIRED_SHORTENINGS:
+        if (lw, rw) in paired_shortenings:
             return _MAYBE
 
     if _ENDS_WITH_EMOTION.search(left) and _STARTS_WITH_LOWER.match(right):
@@ -73,7 +76,7 @@ def _is_sentence_end(left: str, right: str) -> int:
         if (border or ' ') not in "°'":
             return _JOIN
 
-    if lw.lower() in SHORTENINGS:
+    if lw.lower() in shortenings:
         return _MAYBE
 
     last_letter = _ENDS_WITH_ONE_LETTER_LAT_AND_DOT.search(left)
@@ -86,7 +89,10 @@ def _is_sentence_end(left: str, right: str) -> int:
     return _SPLIT
 
 
-def ru_sent_tokenize(text: str) -> [str]:
+def ru_sent_tokenize(text: str,
+                     shortenings: Set[str] = SHORTENINGS,
+                     joining_shortenings: Set[str] = JOINING_SHORTENINGS,
+                     paired_shortenings: Set[Tuple[str, str]] = PAIRED_SHORTENINGS) -> List[str]:
     sentences = []
     sents = _regex_split_separators(text)
     si = 0
@@ -100,7 +106,7 @@ def ru_sent_tokenize(text: str) -> [str]:
 
         si += 1
 
-        send = _is_sentence_end(text[sent_start: span_end], text[span_end:])
+        send = _is_sentence_end(text[sent_start: span_end], text[span_end:], shortenings, joining_shortenings, paired_shortenings)
         if send == _JOIN:
             continue
 
