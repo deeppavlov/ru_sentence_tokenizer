@@ -1,11 +1,11 @@
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding='utf8') as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="ru_sent_tokenize",
-    version="0.0.1",
+    version="0.0.2",
     author="Marat Zaynutdinov",
     author_email="tsundokum@gmail.com",
     description="Rule-based sentence tokenizer for Russian language",
