@@ -25,7 +25,7 @@ Recall. Second metric is we took two consecutive sentences from the datasets and
 |---|---|---|---|---|---|---|
 |nltk.sent_tokenize|94.30|86.06|8.67|98.15|94.95|5.07|
 |nltk.sent_tokenize(x, language='russian')| 95.53 | 88.37 | 8.54 | 98.44 | 95.45 | 5.68 |
-|bureaucratic-labs.segmentator.split| (in process) | (in process) | (in process) | (in process) | (in process)|(in process)|
+|bureaucratic-labs.segmentator.split| 97.16 | 88.62 | 359 | (in process) | (in process)|(in process)|
 |ru_sent_tokenize| 98.83 | 93.19 | 4.87 | 99.82 | 96.56 | 2.81 |
 
 
