@@ -74,3 +74,5 @@ Recall. Second metric is we took two consecutive sentences from the datasets and
     </tr>
   </tbody>
 </table>
+
+[Notebook](https://github.com/deepmipt/ru_sentence_tokenizer/blob/master/metrics/calculate.ipynb) shows how the table above was calculated 
