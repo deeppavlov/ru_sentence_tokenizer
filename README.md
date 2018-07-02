@@ -30,10 +30,10 @@ Recall. Second metric is we took two consecutive sentences from the datasets and
   <tr>
     <th>Precision</th>
     <th>Recall</th>
-    <th>Execution Time</th>
+    <th>Execution Time (sec)</th>
     <th>Precision</th>
     <th>Recall</th>
-    <th>Execution Time</th>
+    <th>Execution Time (sec)</th>
   </tr>
   <tbody>
     <tr>
@@ -59,9 +59,9 @@ Recall. Second metric is we took two consecutive sentences from the datasets and
       <td>97.16</td>
       <td>88.62</td>
       <td>359</td>
-      <td>(in process)</td>
-      <td>(in process)</td>
-      <td>(in process)</td>
+      <td>96.79</td>
+      <td>92.55</td>
+      <td>210</td>
     </tr>
     <tr>
       <td>ru_sent_tokenize</td>
@@ -74,7 +74,3 @@ Recall. Second metric is we took two consecutive sentences from the datasets and
     </tr>
   </tbody>
 </table>
-
-
-
-
