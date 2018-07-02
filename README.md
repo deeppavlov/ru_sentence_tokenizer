@@ -21,13 +21,59 @@ Precision. First one is we took single sentences from the datasets and measured 
 
 Recall. Second metric is we took two consecutive sentences from the datasets and joined each pair with a space characted. We measured how many times tokenizer correctly splitted a long sentence into two.
 
-|tokenizer|Precision (OpenCorpora)|Recall (OpenCorpora)|Execution Time (OpenCorpora)|Precision (SynTagRus)| Recall (SynTagRus)|Execution Time (OpenCorpora)|
-|---|---|---|---|---|---|---|
-|nltk.sent_tokenize|94.30|86.06|8.67|98.15|94.95|5.07|
-|nltk.sent_tokenize(x, language='russian')| 95.53 | 88.37 | 8.54 | 98.44 | 95.45 | 5.68 |
-|bureaucratic-labs.segmentator.split| 97.16 | 88.62 | 359 | (in process) | (in process)|(in process)|
-|ru_sent_tokenize| 98.83 | 93.19 | 4.87 | 99.82 | 96.56 | 2.81 |
-
+<table>
+  <tr>
+    <th rowspan=2>tokenizer</th>
+    <th colspan=3>OpenCorpora</th>
+    <th colspan=3>SynTagRus</th>
+  </tr>
+  <tr>
+    <th>Precision</th>
+    <th>Recall</th>
+    <th>Execution Time</th>
+    <th>Precision</th>
+    <th>Recall</th>
+    <th>Execution Time</th>
+  </tr>
+  <tbody>
+    <tr>
+      <td>nltk.sent_tokenize</td>
+      <td>94.30</td>
+      <td>86.06</td>
+      <td>8.67</td>
+      <td>98.15</td>
+      <td>94.95</td>
+      <td>5.07</td>
+    </tr>
+    <tr>
+      <td>nltk.sent_tokenize(x, language='russian')</td>
+      <td>95.53</td>
+      <td>88.37</td>
+      <td>8.54</td>
+      <td>98.44</td>
+      <td>95.45</td>
+      <td>5.68</td>
+    </tr>
+    <tr>
+      <td>bureaucratic-labs.segmentator.split</td>
+      <td>97.16</td>
+      <td>88.62</td>
+      <td>359</td>
+      <td>(in process)</td>
+      <td>(in process)</td>
+      <td>(in process)</td>
+    </tr>
+    <tr>
+      <td>ru_sent_tokenize</td>
+      <td>98.83</td>
+      <td>93.19</td>
+      <td>4.87</td>
+      <td>99.82</td>
+      <td>96.56</td>
+      <td>2.81</td>
+    </tr>
+  </tbody>
+</table>
 
 
 
