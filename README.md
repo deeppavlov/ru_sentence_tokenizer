@@ -13,6 +13,11 @@ python3 -m pip install --index-url https://test.pypi.org/simple/ ru_sent_tokeniz
 ['Эта шоколадка за 400р. ничего из себя не представляла.', 'Артём решил больше не ходить в этот магазин']
 ```
 
+# To run unittests
+```
+python3 -m unittest
+```
+
 # Metrics
 
 The tokenizer has been tested on OpenCorpora and SynTagRus. There are two important metrics. 
