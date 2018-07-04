@@ -65,12 +65,12 @@ Recall. Second metric is we took two consecutive sentences from the datasets and
     </tr>
     <tr>
       <td>ru_sent_tokenize</td>
-      <td>98.83</td>
-      <td>93.19</td>
-      <td>4.87</td>
-      <td>99.82</td>
-      <td>96.56</td>
-      <td>2.81</td>
+      <td>98.73</td>
+      <td>93.45</td>
+      <td>4.92</td>
+      <td>99.81</td>
+      <td>98.59</td>
+      <td>2.87</td>
     </tr>
   </tbody>
 </table>
