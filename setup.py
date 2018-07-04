@@ -5,7 +5,7 @@ with open("README.md", "r", encoding='utf8') as fh:
 
 setuptools.setup(
     name="rusenttokenize",
-    version="0.0.4",
+    version="0.0.5",
     author="Marat Zaynutdinov",
     author_email="tsundokum@gmail.com",
     description="Rule-based sentence tokenizer for Russian language",
