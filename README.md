@@ -1,14 +1,14 @@
-# ru_sentence_tokenizer
+# ru_sent_tokenize
 A simple and fast rule-based sentence segmentation. Tested on OpenCorpora and SynTagRus datasets.
 
 # Installation
 ```
-python3 -m pip install --index-url https://test.pypi.org/simple/ ru_sent_tokenize
+pip install rusenttokenize
 ```
 
 # Running
 ```ipython
->>> from ru_sent_tokenize import ru_sent_tokenize
+>>> from rusenttokenize import ru_sent_tokenize
 >>> ru_sent_tokenize('Эта шоколадка за 400р. ничего из себя не представляла. Артём решил больше не ходить в этот магазин')
 ['Эта шоколадка за 400р. ничего из себя не представляла.', 'Артём решил больше не ходить в этот магазин']
 ```
